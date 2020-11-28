@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Categories{% endblock %}
+
+
+{% block  content %}
+
+{% if user.is_authenticated %}
+
+<h1>Company's List</h1>
+
+{% for item in cat_menu_list %}
+    <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}<br/></a>
+{% endfor %}
+
+{% else %}
+<h2>Please Login First</h2>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block  content %}
+
+
+<ul>
+     {% if user.is_authenticated %}
+     <h1>EXPERIENCES : </h1>
+     <br/>
+     <br/>
+{% for post in object_list %}
+
+<li><a href="{% url 'article-detail' post.pk %}">{{ post.title }} </a>-{{ post.author }} - 
+     <a href="{% url 'category' post.category %}">{{ post.category }}</a> -
+     {{ post.post_date }}
+     {{ post.author.email }}
+     {% if user.is_authenticated %}
+     {% if user.id == post.author.id %}
+     -<a href="{% url 'update_post' post.pk  %}">Edit</a>
+     -<a href="{% url 'delete_post' post.pk %}">Delete</a>
+     
+     {% endif %}
+     {% endif %}
+
+     <br/>
+{{ post.body|slice:":200" }}</li>
+<br/>
+{% endfor %}
+</ul>
+{% else %}
+<br/>
+<br/>
+<h1>WELCOME TO EXPERIENCES.IO!!</h1>
+<h2>A place to Find Interview Experiences of various Companies!!</h2>
+<br/>
+<br/>
+<h3>Follow these simple steps to either read or create an Experiences post.</h3>
+<br/>
+<ul>
+     <li>If you have not registered yet, First register and Login.</li>
+     <li>After Logging in, You will be directed to the Home Page.</li>
+     <li>If you want to write an Interview Experience, First add the Company Name by clicking on the Add Companies Option on top of the page.</li>
+     <li>After adding the Company name, Go to the Add Post option on top and Add Your Experience.</li>
+</ul>
+{% endif %}
+
+{% endblock %}
