@@ -25,7 +25,7 @@ SECRET_KEY = '_9$y!@*9wg9r^5!8jdcf_s@d*x77)(-dh)uk&mzv!51l%ygcx#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['interviewexperiences.pythonanywhere.com']
 
 
 # Application definition
